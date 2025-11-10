@@ -54,7 +54,7 @@ graph TB
 
     subgraph inference["🧠 AI Inference Layer"]
         subgraph models["Model Registry"]
-            L["👁️ Gemma 3:4b<br/>Vision Model"]
+            L["👁️ Gemma 3:12b<br/>Vision Model"]
             S["✍️ Gemma 3:1b<br/>Text Model"]
         end
         
@@ -117,7 +117,7 @@ This diagram outlines two primary user-driven interactions: analyzing the Rubik'
         2.  **Confidence Check**: A logic check evaluates the confidence score of OpenCV's detection.
         3.  **Conditional Fallback**:
             *   If the confidence is high, the results from OpenCV are validated and returned immediately to the client. This is a quick and low-cost operation.
-            *   If the confidence is low (e.g., due to poor lighting or an unusual angle), the image is passed to the more powerful **Vision Inference Service (Gemma 3:4b)** for a more robust analysis.
+            *   If the confidence is low (e.g., due to poor lighting or an unusual angle), the image is passed to the more powerful **Vision Inference Service (Gemma 3:12b)** for a more robust analysis.
         4.  **Response**: The final, validated color data is sent back to the game client as a JSON object.
 
     *   **Trash Talk Flow (`/trash-talk`)**:
@@ -126,7 +126,7 @@ This diagram outlines two primary user-driven interactions: analyzing the Rubik'
         3.  **Response**: The generated text is sent back to the client.
 
 4.  **Inference Environment (Ollama / Google Cloud Run)**: This environment hosts the machine learning models. It can be run locally with **Ollama** for development or deployed to **Google Cloud Run** for production. It serves two distinct models:
-    *   **Gemma 3:4b**: A vision-capable model used as a fallback for complex cube face analysis.
+    *   **Gemma 3:12b**: A vision-capable model used as a fallback for complex cube face analysis.
     *   **Gemma 3:1b**: A lightweight text generation model for creating dialogue.
 
 5.  **Finalizing the Loop**:
